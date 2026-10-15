@@ -1,0 +1,10 @@
+numpy
+pillow
+PyYAML
+pycocotools
+pytest
+requests
+opencv-python-headless
+ultralytics==8.4.177
+# torch/torchvision: install the CUDA build matching the VM driver first
+

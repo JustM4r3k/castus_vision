@@ -1,0 +1,34 @@
+# Run B: TACO + BePLi, plain training (no sampling, no loss masking). Shows the raw effect of BePLi
+# including its missing-annotation problem (unlabelled cans/glass/etc. in BePLi images).
+run_name: B_taco_bepli_plain
+model: yolo26s-seg.pt
+project: runs
+
+data:
+  root: datasets/yolo
+  sources: [taco, bepli]
+  train: train_all.txt
+  val: val_taco.txt            # same primary eval images as run A
+  test: test_taco.txt
+  extra_eval:
+    val_bepli: val_bepli.txt
+    test_bepli: test_bepli.txt
+
+train:
+  epochs: 50                   # ~4.2k images/epoch (3.6x run A); see README note on epochs vs. steps
+  patience: 20
+  imgsz: 640
+  batch: 16
+  workers: 8
+  device: null
+  cache: false
+  seed: 0
+  deterministic: true
+  optimizer: auto
+  cos_lr: false
+  close_mosaic: 10
+  amp: true
+  save_period: -1
+  plots: true
+
+castus: {}

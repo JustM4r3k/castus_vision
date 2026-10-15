@@ -1,0 +1,42 @@
+# Run D: TACO + BePLi with masked classification loss (+ the same weighted sampling as run C, so D vs C
+# isolates the loss masking). In BePLi images, background anchors are not penalised for predicting
+# can / glass / metal_other / paper_cardboard, since BePLi does not annotate them.
+run_name: D_taco_bepli_masked
+model: yolo26s-seg.pt
+project: runs
+
+data:
+  root: datasets/yolo
+  sources: [taco, bepli]
+  train: train_all.txt
+  val: val_taco.txt
+  test: test_taco.txt
+  extra_eval:
+    val_bepli: val_bepli.txt
+    test_bepli: test_bepli.txt
+
+train:
+  epochs: 50
+  patience: 20
+  imgsz: 640
+  batch: 16
+  workers: 8
+  device: null
+  cache: false
+  seed: 0
+  deterministic: true
+  optimizer: auto
+  cos_lr: false
+  close_mosaic: 10
+  amp: true
+  save_period: -1
+  plots: true
+  mixup: 0.0
+  cutmix: 0.0
+
+castus:
+  source_pure_mosaic: true
+  sampling: {taco: 0.6, bepli: 0.4}
+  masked_loss:
+    source: bepli
+    classes: [can, glass, metal_other, paper_cardboard]

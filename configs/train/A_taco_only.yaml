@@ -1,0 +1,35 @@
+# Run A: TACO-only baseline. Primary metrics: TACO val/test. BePLi val/test reported as secondary.
+# Hardware-dependent values (device, batch, workers, cache) are placeholders: set them for the VM
+# via --set train.device=0 train.batch=... train.workers=...
+run_name: A_taco_only
+model: yolo26s-seg.pt          # pretrained COCO segmentation weights, downloaded by Ultralytics
+project: runs
+
+data:
+  root: datasets/yolo
+  sources: [taco, bepli]
+  train: train_taco.txt
+  val: val_taco.txt
+  test: test_taco.txt
+  extra_eval:
+    val_bepli: val_bepli.txt
+    test_bepli: test_bepli.txt
+
+train:                         # passed straight to ultralytics model.train()
+  epochs: 100                  # ~1.1k images/epoch -> small data, needs many epochs
+  patience: 30                 # early stop on val fitness
+  imgsz: 640
+  batch: 16                    # VM-dependent: raise it once VRAM is known
+  workers: 8                   # VM-dependent
+  device: null                 # VM-dependent, e.g. 0
+  cache: false                 # 'ram' / 'disk' speeds up training if the VM has room
+  seed: 0
+  deterministic: true
+  optimizer: auto
+  cos_lr: false
+  close_mosaic: 10
+  amp: true
+  save_period: -1
+  plots: true
+
+castus: {}

@@ -1,0 +1,66 @@
+# TACO (annotations.json) -> CASTUS classes.
+# Values: a CASTUS class name, "ignore" (never used as a label), or "review"
+# (undecided: excluded from training and listed in the import report).
+# DRAFT: entries marked "# DECIDE" need project-owner confirmation.
+dataset: taco
+labels:
+  "Aluminium foil": metal_other
+  "Battery": other_trash
+  "Aluminium blister pack": metal_other          # DECIDE: metal/plastic composite
+  "Carded blister pack": plastic_other             # DECIDE: paper/plastic composite
+  "Other plastic bottle": plastic_bottle
+  "Clear plastic bottle": plastic_bottle
+  "Glass bottle": glass
+  "Plastic bottle cap": plastic_other
+  "Metal bottle cap": metal_other
+  "Broken glass": glass
+  "Food Can": can
+  "Aerosol": can
+  "Drink can": can
+  "Toilet tube": paper_cardboard
+  "Other carton": paper_cardboard
+  "Egg carton": paper_cardboard
+  "Drink carton": plastic_bottle                    # DECIDE: laminated carton (paper/plastic/foil)
+  "Corrugated carton": paper_cardboard
+  "Meal carton": paper_cardboard
+  "Pizza box": paper_cardboard
+  "Paper cup": plastic_other                       # DECIDE: usually plastic-lined
+  "Disposable plastic cup": plastic_other
+  "Foam cup": plastic_other
+  "Glass cup": glass
+  "Other plastic cup": plastic_other
+  "Food waste": other_trash
+  "Glass jar": glass
+  "Plastic lid": plastic_other
+  "Metal lid": metal_other
+  "Other plastic": plastic_other
+  "Magazine paper": paper_cardboard
+  "Tissues": paper_cardboard
+  "Wrapping paper": paper_cardboard
+  "Normal paper": paper_cardboard
+  "Paper bag": paper_cardboard
+  "Plastified paper bag": plastic_other            # DECIDE (0 instances in TACO)
+  "Plastic film": plastic_other
+  "Six pack rings": plastic_other
+  "Garbage bag": plastic_other
+  "Other plastic wrapper": plastic_other
+  "Single-use carrier bag": plastic_other
+  "Polypropylene bag": plastic_other
+  "Crisp packet": plastic_other
+  "Spread tub": plastic_other
+  "Tupperware": plastic_other
+  "Disposable food container": plastic_other
+  "Foam food container": plastic_other
+  "Other plastic container": plastic_other
+  "Plastic glooves": plastic_other
+  "Plastic utensils": plastic_other
+  "Pop tab": metal_other
+  "Rope & strings": other_trash                  # DECIDE: material unknown
+  "Scrap metal": metal_other
+  "Shoe": other_trash
+  "Squeezable tube": plastic_other                 # DECIDE: plastic or metal
+  "Plastic straw": plastic_other
+  "Paper straw": paper_cardboard
+  "Styrofoam piece": plastic_other
+  "Unlabeled litter": ignore                # litter of unknown type: image is not a clean negative
+  "Cigarette": other_trash

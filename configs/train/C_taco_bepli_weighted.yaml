@@ -1,0 +1,39 @@
+# Run C: TACO + BePLi with weighted source sampling. Every training sample is drawn from TACO with probability
+# 0.6 and from BePLi with 0.4 (natural ratio is ~0.28 / 0.72). Mosaics stay source-pure.
+# NOTE: sampling alone does NOT fix missing annotations in BePLi images; it only limits their influence.
+run_name: C_taco_bepli_weighted
+model: yolo26s-seg.pt
+project: runs
+
+data:
+  root: datasets/yolo
+  sources: [taco, bepli]
+  train: train_all.txt
+  val: val_taco.txt
+  test: test_taco.txt
+  extra_eval:
+    val_bepli: val_bepli.txt
+    test_bepli: test_bepli.txt
+
+train:
+  epochs: 50
+  patience: 20
+  imgsz: 640
+  batch: 16
+  workers: 8
+  device: null
+  cache: false
+  seed: 0
+  deterministic: true
+  optimizer: auto
+  cos_lr: false
+  close_mosaic: 10
+  amp: true
+  save_period: -1
+  plots: true
+  mixup: 0.0
+  cutmix: 0.0
+
+castus:
+  source_pure_mosaic: true
+  sampling: {taco: 0.6, bepli: 0.4}

@@ -1,0 +1,14 @@
+pyproject.toml
+src/castus_vision/__init__.py
+src/castus_vision/annotations.py
+src/castus_vision/coco_io.py
+src/castus_vision/taxonomy.py
+src/castus_vision.egg-info/PKG-INFO
+src/castus_vision.egg-info/SOURCES.txt
+src/castus_vision.egg-info/dependency_links.txt
+src/castus_vision.egg-info/requires.txt
+src/castus_vision.egg-info/top_level.txt
+src/castus_vision/data/__init__.py
+src/castus_vision/data/import_coco.py
+src/castus_vision/data/validate.py
+tests/test_import.py

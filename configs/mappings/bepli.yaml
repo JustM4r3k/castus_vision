@@ -1,0 +1,18 @@
+# BePLi v2 (all_plastic_coco.json) -> CASTUS classes.
+# BePLi contains plastic litter only, so glass/metal/paper never occur here.
+# DRAFT: entries marked "# DECIDE" need project-owner confirmation.
+dataset: bepli
+labels:
+  "pet_bottle": plastic_bottle
+  "other_bottle": plastic_bottle            # DECIDE: check a sample
+  "plastic_bag": plastic_other
+  "box_shaped_case": plastic_other
+  "other_container": plastic_other
+  "rope": other_trash                            # DECIDE: previous AnnotationMaster map used plastic_other
+  "other_string": other_trash                    # DECIDE
+  "fishing_net": plastic_other
+  "buoy": plastic_other
+  "other_fishing_gear": plastic_other
+  "styrene_foam": plastic_other
+  "others": other_trash                          # DECIDE: ambiguous catch-all (23k instances)
+  "fragment": plastic_other                 # DECIDE: 62k tiny instances dominate; consider capping

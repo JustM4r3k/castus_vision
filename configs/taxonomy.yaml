@@ -1,0 +1,10 @@
+# Fixed CASTUS classes. IDs must never change.
+version: 1
+classes:
+  0: can
+  1: plastic_bottle
+  2: glass
+  3: metal_other
+  4: paper_cardboard
+  5: plastic_other
+  6: other_trash

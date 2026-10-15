@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "castus_vision"
+version = "0.1.0"
+description = "CASTUS beach-litter instance segmentation pipeline"
+requires-python = ">=3.10"
+dependencies = ["numpy", "pillow", "PyYAML", "pycocotools"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
